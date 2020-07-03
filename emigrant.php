@@ -16,9 +16,7 @@ $sub_links = array();
 $query = http_build_query(
                     array(
                       't'     => 'week',
-                      'limit' => 1
-                    )
-                  );
+                      'limit' => 1));
 foreach($subreddits as $sub){
   $sub_links[] = "https://www.reddit.com/r/".$sub."/top.json?".$query;
 }
@@ -37,7 +35,7 @@ foreach($sub_links as $link){
     die();
   }
   $rjson = json_decode($result);
-  // parse the JSON data
+  // parse the JSON data into simpler object
   $top = $rjson->data->children[0]->data;
   //print_r($top);
   $title_text = html_entity_decode($top->title);
