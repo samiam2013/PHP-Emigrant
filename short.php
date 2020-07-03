@@ -6,5 +6,5 @@ foreach($subs as $sub){
 foreach($links as $sub => $link){
   $res = json_decode(file_get_contents($link));
   $title = html_entity_decode($res->data->children[0]->data->title);
-  echo 'r/'.$sub.": ".$title."\n";
+  echo 'r/'.$sub.": ".$title."\n".$res->data->children[0]->data->url."\n";
 }
