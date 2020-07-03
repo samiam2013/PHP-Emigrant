@@ -1,10 +1,7 @@
 <?php
-$subs = array("javascript","Python","java","csharp","cpp",
+$s = array("javascript","Python","java","csharp","cpp",
   "typescript","bash","C_Programming","ruby");
-foreach($subs as $sub){
-  $links[$sub] = "https://www.reddit.com/r/".$sub."/top.json?t=week&limit=1";}
-foreach($links as $sub => $link){
-  $res = json_decode(file_get_contents($link));
-  $title = html_entity_decode($res->data->children[0]->data->title);
-  echo 'r/'.$sub.": ".$title."\n".$res->data->children[0]->data->url."\n";
-}
+foreach($s as $b){ $l[$b] = "http://reddit.com/r/".$b."/top.json?t=week";}
+foreach($l as $b => $k){
+  $r = json_decode(file_get_contents($k))->data->children[0]->data;
+  echo 'r/'.$b.": ".html_entity_decode($r->title)."\n".$r->url."\n";}
